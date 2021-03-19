@@ -17,15 +17,16 @@ public class LinkedListDeque<T> {
 
     public LinkedListDeque(){
         sentinel = new TNode();
-        sentinel.next =sentinel.prev;
+        sentinel.next = new TNode();
+
         size = 0;
     }
     public void addFirst(T item){
-        sentinel.next = new TNode(sentinel, item, sentinel.next);
+        sentinel.next = new TNode(sentinel.prev, item, sentinel.next);
         size += 1;
     }
     public void addLast(T item){
-        sentinel.prev = new TNode(sentinel.prev, item, sentinel);
+        sentinel.prev = new TNode(sentinel.prev, item, sentinel.next);
         size += 1;
     }
     public boolean isEmpty(){
