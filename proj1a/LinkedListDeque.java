@@ -13,20 +13,20 @@ public class LinkedListDeque<T> {
     }
 
     private TNode sentinel;
+    private TNode pointer;
     private int size;
 
     public LinkedListDeque(){
         sentinel = new TNode();
-        sentinel.next = new TNode();
-
+        pointer = sentinel;
         size = 0;
     }
     public void addFirst(T item){
-        sentinel.next = new TNode(sentinel.prev, item, sentinel.next);
+        sentinel.next = new TNode(sentinel, item, sentinel.prev);
         size += 1;
     }
     public void addLast(T item){
-        sentinel.prev = new TNode(sentinel.prev, item, sentinel.next);
+        sentinel.prev = new TNode(sentinel.next, item, sentinel);
         size += 1;
     }
     public boolean isEmpty(){
