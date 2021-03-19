@@ -48,7 +48,8 @@ public class LinkedListDeque<T> {
             TNode p = sentinel;
             p = p.next;
             T a = p.item;
-            sentinel.next = new TNode(sentinel, p.next.item, p.next);
+            sentinel.next = p.next;
+            p.prev = sentinel;
             p = null;
             return a;
 
@@ -61,7 +62,8 @@ public class LinkedListDeque<T> {
             TNode p = sentinel;
             p = p.prev;
             T a = p.item;
-            sentinel.prev = new TNode(p.prev, p.prev.item, sentinel);
+            sentinel.prev = p.prev;
+            p.next = sentinel;
             p = null;
             return a;
         }

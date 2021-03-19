@@ -33,7 +33,7 @@ public class ArrayDeque <T>{
         nextLast += 1;
     }
     public boolean isEmpty(){
-        if(items == null)
+        if(size == 0)
             return true;
         return false;
     }
