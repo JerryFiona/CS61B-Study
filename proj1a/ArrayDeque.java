@@ -17,20 +17,20 @@ public class ArrayDeque <T>{
         nextFirst = items.length-1;
     }
     public void addFirst(T item){
-        if (size==items.length){
+        if (size == items.length){
            resize(size*2);
         }
-        items[nextFirst]=item;
-        size+=1;
-        nextFirst-=1;
+        items[nextFirst] = item;
+        size += 1;
+        nextFirst -= 1;
     }
     public void addLast(T item){
-        if (size==items.length){
+        if (size == items.length){
             resize(size*2);
         }
-        items[nextLast]=item;
-        size+=1;
-        nextLast+=1;
+        items[nextLast] = item;
+        size += 1;
+        nextLast += 1;
     }
     public boolean isEmpty(){
         if(items == null)
@@ -41,8 +41,8 @@ public class ArrayDeque <T>{
         return size;
     }
     public void printDeque(){
-        for(int i = 0; i < size; i+=1){
-            System.out.print(items[i]+" ");
+        for(int i = 0; i < size; i += 1){
+            System.out.print(items[i] + " ");
         }
     }
     public T removeFirst(){
@@ -50,8 +50,8 @@ public class ArrayDeque <T>{
         if (R < 0.25) {
             resize(size/2);
         }
-        size-=1;
-        nextFirst+=1;
+        size -= 1;
+        nextFirst += 1;
         return items[nextFirst];
     }
     public T removeLast(){
@@ -59,8 +59,8 @@ public class ArrayDeque <T>{
         if (R < 0.25 ) {
             resize(size/2);
         }
-        size-=1;
-        nextLast-=1;
+        size -= 1;
+        nextLast -= 1;
         return items[nextLast];
     }
     public T get(int index){

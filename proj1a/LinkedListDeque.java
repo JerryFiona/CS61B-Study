@@ -16,12 +16,12 @@ public class LinkedListDeque<T> {
     private int size;
 
     public LinkedListDeque(){
-        sentinel= new TNode();
+        sentinel = new TNode();
         size = 0;
     }
     public void addFirst(T item){
         sentinel.next = new TNode(sentinel, item, sentinel.next);
-        size +=1;
+        size += 1;
     }
     public void addLast(T item){
         sentinel.prev = new TNode(sentinel.next, item, sentinel);
@@ -44,22 +44,22 @@ public class LinkedListDeque<T> {
 
     }
     public T removeFirst(){
-        if(sentinel.next!=null){
+        if(sentinel.next != null){
             TNode p = sentinel;
             p = p.next;
             T a = p.item;
-            sentinel= new TNode(sentinel.prev,sentinel.item,p.next);
+            sentinel = new TNode(sentinel.prev,sentinel.item,p.next);
             return a;
         }
         return null;
 
     }
     public T removeLast(){
-        if(sentinel.prev!=null){
+        if(sentinel.prev != null){
             TNode p = sentinel;
             p = p.prev;
             T a = p.item;
-            sentinel= new TNode(p.prev, sentinel.item, sentinel.next);
+            sentinel = new TNode(p.prev, sentinel.item, sentinel.next);
             return a;
         }
         return null;
@@ -68,24 +68,24 @@ public class LinkedListDeque<T> {
     public T get(int index){
         TNode p = sentinel;
         int i = 0;
-        while (p.next!=null){
-            if(i==index){
+        while (p.next != null){
+            if(i == index){
                 return p.next.item;
             }
-            p=p.next;
-            i+=1;
+            p = p.next;
+            i += 1;
         }
         return null;
 
     }
     public T getRecursive(int index){
-         if(sentinel.next==null||index>size-1){
+         if(sentinel.next == null || index > size-1){
              return null;
         }
          return getHelp(sentinel.next, index);
     }
     private T getHelp(TNode m, int n){
-        if (n==0){
+        if (n == 0){
             return m.item;
         }
         return getHelp(m.next, n-1);
