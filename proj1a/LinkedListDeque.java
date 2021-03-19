@@ -24,7 +24,7 @@ public class LinkedListDeque<T> {
         size += 1;
     }
     public void addLast(T item){
-        sentinel.prev = new TNode(sentinel.next, item, sentinel);
+        sentinel.prev = new TNode(sentinel.prev, item, sentinel);
         size += 1;
     }
     public boolean isEmpty(){
@@ -48,8 +48,10 @@ public class LinkedListDeque<T> {
             TNode p = sentinel;
             p = p.next;
             T a = p.item;
-            sentinel = new TNode(sentinel.prev,sentinel.item,p.next);
+            sentinel.next = new TNode(sentinel, p.next.item, p.next);
+            p = null;
             return a;
+
         }
         return null;
 
@@ -59,7 +61,8 @@ public class LinkedListDeque<T> {
             TNode p = sentinel;
             p = p.prev;
             T a = p.item;
-            sentinel = new TNode(p.prev, sentinel.item, sentinel.next);
+            sentinel.prev = new TNode(p.prev, p.prev.item, sentinel);
+            p = null;
             return a;
         }
         return null;
