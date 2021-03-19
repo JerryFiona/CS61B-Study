@@ -28,7 +28,7 @@ public class LinkedListDeque<T> {
         size += 1;
     }
     public boolean isEmpty(){
-        if (sentinel.next == null)
+        if (sentinel.next == null && sentinel.prev == null)
             return true;
         return false;
     }
