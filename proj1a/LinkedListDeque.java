@@ -22,23 +22,39 @@ public class LinkedListDeque<T> {
 
     }
     public void addFirst(T item){
-        while(sentinel == null){
+        if(sentinel == null){
             sentinel.item = item;
             sentinel.next = sentinel;
             sentinel.prev = sentinel;
-
+            return;
         }
-        sentinel.next= new TNode(sentinel, item, sentinel.next);
+
+        //sentinel.next= new TNode(sentinel, item, sentinel.next);
+        TNode last = sentinel.next;
+        TNode new_node = new TNode();
+        new_node.item = item;
+        new_node.prev = sentinel;
+        sentinel.next = new_node;
+        new_node.next = last;
+        last.prev = new_node;
         size = size+1;
     }
     public void addLast(T item){
-        while(sentinel == null){
+        if(sentinel == null){
             sentinel.item = item;
             sentinel.next = sentinel;
             sentinel.prev = sentinel;
-
+            return;
         }
-        sentinel.prev = new TNode(sentinel.prev, item, sentinel);
+        //sentinel.prev = new TNode(sentinel.prev, item, sentinel);
+        TNode last = sentinel.prev;
+        TNode new_node = new TNode();
+        new_node.item = item;
+        new_node.next = sentinel;
+        sentinel.prev = new_node;
+        new_node.prev = last;
+        last.next = new_node;
+
         size = size + 1;
     }
 
