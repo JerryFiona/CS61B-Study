@@ -89,6 +89,5 @@ public class LinkedListDeque<T> {
         }
         return getHelp(m.next, n - 1);
     }
-    String newline = System.getProperty("line.separator");
 }
 
