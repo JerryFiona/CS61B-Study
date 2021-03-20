@@ -40,7 +40,7 @@ public class LinkedListDeque<T> {
         TNode p = sentinel;
         int q = size;
         while (q != 0) {
-            System.out.print(p.next.item + " ");
+            System.out.println(p.next.item + " ");
             p = p.next;
             q = q - 1;
         }

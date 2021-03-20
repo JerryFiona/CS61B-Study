@@ -64,7 +64,7 @@ public class ArrayDeque<T> {
 
     public void printDeque() {
         for (int i = 0; i < size; i += 1) {
-            System.out.print(items[i] + " ");
+            System.out.println(items[i] + " ");
         }
     }
 
