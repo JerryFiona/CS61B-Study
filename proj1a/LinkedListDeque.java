@@ -1,4 +1,4 @@
-public class LinkedListDeque <T> {
+public class LinkedListDeque<T> {
     private class TNode {
         private TNode prev;
         private T item;
@@ -89,10 +89,10 @@ public class LinkedListDeque <T> {
     }
 
     public T getRecursive(int index) {
-         if ((index< 0) || (size == 0) || (index > size - 1)) {
-             return null;
-         }
-         return getHelp(sentinel.next, index);
+        if ((index < 0) || (size == 0) || (index > size - 1)) {
+            return null;
+        }
+        return getHelp(sentinel.next, index);
     }
 
     private T getHelp(TNode m, int n) {
