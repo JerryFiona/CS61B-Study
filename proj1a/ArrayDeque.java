@@ -120,13 +120,8 @@ public class ArrayDeque<T> {
         if ( p < items.length) {
             return items[p];
         }
-        if ( p >= items.length) {
             p = p - items.length;
             return items[p];
-        }
-
-
-
 
     }
 }
