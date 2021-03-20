@@ -13,14 +13,22 @@ public class ArrayDeque<T> {
 
     private void resizeLarge(int capacity) {
         T[] a = (T[]) new Object[capacity];
-        System.arraycopy(items, 0, a, 0, size);
+        if (nextFirst < nextLast) {
+            System.arraycopy(items, 0, a, 0, size);
+        }
+        else {
+            System.arraycopy(items, nextFirst + 1, a, 0, size - nextFirst - 1);
+            System.arraycopy(items, 0, a, size - nextFirst - 1, nextFirst + 1);
+            nextFirst = a.length - 1;
+            nextLast = size;
+        }
         items = a;
     }
 
     public void addFirst(T item) {
         items[nextFirst] = item;
         size += 1;
-        nextFirst -= 1;
+        nextFirst = nextFirst - 1;
         if (size == items.length) {
             resizeLarge(size * 2);
         }
@@ -62,17 +70,14 @@ public class ArrayDeque<T> {
         T[] a = (T[]) new Object[capacity];
         if (nextFirst < nextLast) {
             System.arraycopy(items, nextFirst + 1, a, 0, size);
-            nextFirst = a.length - 1;
-            nextLast = size;
-            items = a;
         }
-        if (nextFirst > nextLast) {
+        else {
             System.arraycopy(items, nextFirst + 1, a, 0, size - nextFirst - 1);
-            System.arraycopy(items, 0, a, size - nextFirst - 1 , nextLast);
-            nextFirst = a.length - 1;
-            nextLast = size;
-            items = a;
+            System.arraycopy(items, 0, a, size - nextFirst - 1 , nextLast + 1);
         }
+        nextFirst = a.length - 1;
+        nextLast = size;
+        items = a;
 
     }
 
