@@ -47,7 +47,7 @@ public class LinkedListDeque <T> {
         while (q != 0) {
             System.out.print(p.next.item + " ");
             p = p.next;
-            q = q-1;
+            q = q - 1;
         }
 
     }
@@ -60,8 +60,8 @@ public class LinkedListDeque <T> {
             return a;
         }
         return null;
-
     }
+
     public T removeLast() {
         if (size != 0) {
             T a = sentinel.prev.item;
@@ -78,22 +78,26 @@ public class LinkedListDeque <T> {
         int i = 0;
         while (size != 0) {
             p = p.next;
-            if (i == index)
+            if (i == index) {
                 return p.item;
+            }
             i += 1;
         }
         return null;
 
     }
     public T getRecursive(int index) {
-         if (index< 0 || size == 0 || index > size - 1)
+         if (index < 0 || size == 0 || index > size - 1) {
              return null;
+         }
          return getHelp(sentinel.next, index);
     }
-    private T getHelp(TNode m, int n){
-        if (n == 0)
+    private T getHelp(TNode m, int n) {
+        if (n == 0) {
             return m.item;
+        }
         return getHelp(m.next, n - 1);
     }
 
 }
+
