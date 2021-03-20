@@ -1,5 +1,5 @@
 public class LinkedListDeque <T> {
-    private class TNode{
+    private class TNode {
         private TNode prev;
         private T item;
         private TNode next;
@@ -18,13 +18,14 @@ public class LinkedListDeque <T> {
         sentinel = new TNode(null, null, null);
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
-
     }
+
     public void addFirst(T item) {
         sentinel.next = new TNode(sentinel, item, sentinel.next);
         sentinel.next.next.prev = sentinel.next;
         size = size + 1;
     }
+
     public void addLast(T item) {
         sentinel.prev = new TNode(sentinel.prev, item, sentinel);
         sentinel.prev.prev.next = sentinel.prev;
@@ -32,8 +33,9 @@ public class LinkedListDeque <T> {
     }
 
     public boolean isEmpty() {
-        if (size == 0)
+        if (size == 0) {
             return true;
+        }
         return false;
     }
 
@@ -84,14 +86,15 @@ public class LinkedListDeque <T> {
             i += 1;
         }
         return null;
-
     }
+
     public T getRecursive(int index) {
-         if (index < 0 || size == 0 || index > size - 1) {
+         if ((index< 0) || (size == 0) || (index > size - 1)) {
              return null;
          }
          return getHelp(sentinel.next, index);
     }
+
     private T getHelp(TNode m, int n) {
         if (n == 0) {
             return m.item;
