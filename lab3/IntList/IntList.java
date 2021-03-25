@@ -33,15 +33,17 @@ public class IntList {
         this(0, null);
     }
 
-    public static IntList reverse(IntList L) {
-        int n;
-        IntList sentinel = null;
-        while (L != null) {
-            n = L.first;
-            sentinel = new IntList(n, sentinel);
-            L = L.rest;
-        }
-        return sentinel;
+    public static IntList reverse(IntList A) {
+       IntList next = A;
+       IntList front = null;
+       while (next != null) {
+           IntList remainder = next.rest;
+           next.rest = front;
+           front = next;
+           next = remainder;
+       }
+       A = front;
+       return A;
     }
 
 
